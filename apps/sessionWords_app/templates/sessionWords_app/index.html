@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>SessionWords</title>
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'sessionWords_app/css/indexStyle.css' %}">
+</head>
+<body>
+	<div class=wrapper>
+		<div class=insert>
+			<h1>Add a new word</h1>
+			<form action="/addItem" method='post'>
+				{% csrf_token %}
+				<input type="text" name="word">
+				<p><input type="radio" value="Red" name="fontcolor">Red</p>
+				<p><input type="radio" value="Green" name="fontcolor">Green</p>
+				<p><input type="radio" value="Blue" name="fontcolor">Blue</p>
+				<p><input type="hidden" name="big" value=150></p>
+				<p><input type="checkbox" name="big" value=200>show in BIG fonts!</p>
+				<p><input type="submit" name="submit" value="Add to Session"></p>
+			</form>
+		</div>
+		<div class=log>
+			<form action="/clear" method='post'>
+				{% csrf_token %}
+				<input type="submit" name="submit" value="Clear Session">
+			</form>
+			{% for i in request.session.arr %}
+				<p style='color: {{ i.fontcolor }}; font-size: {{ i.size }}%;'>{{ i.word }} - added on {{ i.time }}, {{ i.date }}</p>
+			{% endfor %}
+		</div>
+	</div>
+</body>
+</html>

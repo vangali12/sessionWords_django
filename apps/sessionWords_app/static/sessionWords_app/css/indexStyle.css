@@ -1,0 +1,28 @@
+* {
+	box-sizing: border-box;
+	margin: 0px auto;
+	border: 1px dotted red;
+}
+
+.wrapper{
+}
+
+.insert {
+	display: inline-block;
+	width: 45%;
+	margin: 15px;
+	border: 2px solid black;
+	padding: 20px;
+}
+
+.log {
+	display: inline-block;
+	width: 45%;
+	margin: 15px;
+	border: 2px solid black;
+	padding: 20px;
+}
+
+input {
+	display: inline-block;
+}
